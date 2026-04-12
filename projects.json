@@ -28,7 +28,15 @@
     "description": "Join our mission to plant 1 million trees and make the Earth greener for future generations.",
     "image": "images/Green Earth.png",
     "tags": ["Html", "CSS", "JavaScript"],
-    "github": "#",
+    "github": "error.html",
     "live": "https://green-assignment-6.netlify.app/"
+  },
+  {
+    "title": "Ticket system",
+    "description": "Users can easily create, track, and efficiently manage support requests.",
+    "image": "images/ticket.png",
+    "tags": ["Html", "CSS", "JavaScript","React"],
+    "github": "error.html",
+    "live": "https://tangerine-babka-53be2e.netlify.app/"
   }
 ]
