@@ -1,0 +1,142 @@
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #e5e5e5;
+      overflow-x: hidden;
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(to right, #faca15, #e3a008, #c27803);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .gold-border {
+      border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .gold-bg {
+      background: linear-gradient(135deg, rgba(198, 138, 9, 0.15), rgba(198, 138, 9, 0.05));
+    }
+
+    /* Glassmorphism Header */
+    header.scrolled {
+      backdrop-filter: blur(12px);
+      background-color: rgba(5, 5, 5, 0.85);
+      border-bottom: 1px solid rgba(250, 202, 21, 0.4);
+    }
+
+    .skill-card,
+    .project-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .project-card {
+      background: linear-gradient(145deg, #111111, #0d0d0d);
+    }
+
+    /* Nav Link Underline Effect */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #faca15;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Floating Animation for Hero Image */
+    .hero-img-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    /* Enhanced Cursor Glow */
+    #cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(250, 202, 21, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      filter: blur(25px);
+    }
+
+    /* Shimmering Progress Bar */
+    @keyframes grow {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .animate-progress-grow {
+      animation: grow 2.5s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+    }
+
+    .shimmer-effect {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+.project-card {
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  cursor: pointer;
+}
+.project-card:hover {
+ 
+  transform: scale(1.05) !important; 
+  border: 1px solid rgba(245, 158, 11, 0.5) !important;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3), 
+              0 0 20px rgba(212, 175, 55, 0.2) !important;
+  
+
+  z-index: 10;
+}
+.project-card img {
+  transition: transform 0.4s ease;
+}
+.project-card:hover img {
+  transform: scale(1.1);
+}
