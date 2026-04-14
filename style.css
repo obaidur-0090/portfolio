@@ -138,3 +138,24 @@
 .project-card:hover img {
   transform: scale(1.1);
 }
+
+
+/* background  */
+
+  #particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0; 
+    pointer-events: none;
+  }
+ 
+/* typing annimiton  */
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+#typing-text {
+  animation: blink 0.7s step-end infinite;
+}

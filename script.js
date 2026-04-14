@@ -47,3 +47,96 @@ document.addEventListener("DOMContentLoaded", () => {
             projectContainer.innerHTML = "<p class='text-red-500'>Failed to load projects.</p>";
         });
 });
+
+// --- Particle Animation Logic ---
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function initCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+class Particle {
+    constructor() {
+        this.reset();
+    }
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.opacity = Math.random();
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        
+  
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+            this.reset();
+        }
+    }
+    draw() {
+        ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
+    requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', initCanvas);
+
+
+initCanvas();
+for(let i=0; i<80; i++) particles.push(new Particle());
+animateParticles();
+
+// typing annimiton 
+
+  const textElement = document.getElementById('typing-text');
+  const words = ["Obaidur Rahman", "A Developer",]; 
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typeSpeed = 150;
+  const backSpeed = 100;
+  const delayBetweenWords = 2000;
+
+  function typeEffect() {
+    const currentWord = words[wordIndex];
+    
+    if (isDeleting) {
+      textElement.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      textElement.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let currentTypeSpeed = isDeleting ? backSpeed : typeSpeed;
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      currentTypeSpeed = delayBetweenWords;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      currentTypeSpeed = 500;
+    }
+
+    setTimeout(typeEffect, currentTypeSpeed);
+  }
+
+  document.addEventListener('DOMContentLoaded', typeEffect);
